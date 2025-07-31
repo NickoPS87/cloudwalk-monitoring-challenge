@@ -71,8 +71,7 @@ Em resumo, a função do código é deixar dados "sujos" e desorganizados pronto
 ==**Passo 3: Execução do código python**==
 
 ***Resultado do código:***
-![[analise_checkout.py.png]]
-
+![](../assets/analise_checkout.py.png)
 
 ==**Passo 4: Identificação do Comportamento Anômalo**==
 
@@ -142,7 +141,7 @@ print("\nHoras com MENOS vendas que a média da semana:")
 print(df_sorted_by_diff.tail(5))
 ```
 ***Resultado do código:***
-![[analise_exploratoria.py.png]]
+![](../assets/analise_exploratoria.py.png)
 
 ***Análise da nova saída:*** 
 
@@ -229,7 +228,7 @@ plt.show()
 
 ==***► O Gráfico***==
 
-![[grafico_anomalia_checkout.png]]
+![](../assets/grafico_anomalia_checkout.png)
 
 #Analise:***O gráfico mostra de forma clara e inquestionável a anomalia que descoberta: a queda total nas vendas às 15h.***
 
