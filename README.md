@@ -1,47 +1,55 @@
-Desafio de Análise de Monitoramento - CloudWalk
-Este repositório contém a solução completa para o desafio técnico da vaga de Monitoring Intelligence Analyst. O projeto está dividido em duas partes principais: uma análise exploratória de dados de checkout e a prototipação de um sistema de alertas para transações.
+# Monitoring Analyst Challenge - CloudWalk
 
-📂 Estrutura do Projeto
-O repositório está organizado da seguinte forma:
+This repository contains the complete solution for the Monitoring Intelligence Analyst technical challenge. The project is divided into two main parts: an exploratory data analysis of checkout data and a prototype of an alert system for transactions.
 
-/src: Contém todos os scripts Python desenvolvidos.
+---
 
-/assets: Armazena os gráficos e imagens gerados pela análise.
+## 📂 Project Structure
 
-/csv: Contém os arquivos de dados brutos utilizados no desafio.
+The repository is organized as follows:
 
-/[Cloudwalk].../: Contém a documentação detalhada e as notas do processo de desenvolvimento (feito no Obsidian).
+- **/src**: Contains all the Python scripts developed for the challenge.
+- **/assets**: Stores charts and images generated during the analysis.
+- **/csv**: Contains the raw data files used in the challenge.
+- **/[Cloudwalk].../**: Contains detailed documentation and development notes from the process (created in Obsidian).
 
-🚀 Como Executar
-Parte 1: Análise de Checkout
-Para replicar a análise, execute o script principal:
+---
 
-Bash
+## 🚀 How to Run
 
+### Part 1: Checkout Analysis
+
+To replicate the analysis, execute the main script:
+```bash
 python src/analise_checkout.py
-Este script irá gerar o arquivo grafico_anomalia_checkout.png na pasta assets/.
+```
 
-Parte 2: Servidor de Alertas
-Para iniciar o sistema de monitoramento:
+# This script will generate the grafico_anomalia_checkout.png file in the assets/ folder.
 
-Instale as dependências: pip install Flask pandas
+### Part 2: Alerting Server
+To start the monitoring system:
 
-Inicie o servidor:
-
-Bash
-
+1. Install dependencies:
+```bash
+pip install Flask pandas
+```
+2. Start the server:
+```bash
 python src/servidor_de_alertas.py
-Para testar o endpoint, use os comandos curl em outro terminal.
+```
+3. To test the endpoint, use the curl commands in a separate terminal.
 
-🔎 Análise e Resultados
-Parte 1: Anomalia nos Dados de Checkout
-A análise revelou uma queda abrupta e total no volume de vendas às 15h, um forte indicativo de falha sistêmica.
+## 🔎 Analysis & Results
 
-Ver documentação detalhada da Análise
+### Part 1: Anomaly in Checkout Data
+The analysis revealed a sharp and total drop in sales volume at 3:00 PM (15h), a strong indicator of a system failure.
 
-Ver Gráfico da Anomalia
+See detailed analysis documentation
 
-Parte 2: Sistema de Alertas
-Foi desenvolvido um sistema que alerta quando o volume de transações denied, failed ou reversed excede um limiar estatístico (média + 2 desvios padrão), calculado com base no histórico dos dados.
+See Anomaly Chart
 
-Ver documentação detalhada da Solução
+### Part 2: Alerting System
+
+A system was developed to alert when the volume of denied, failed, or reversed transactions exceeds a statistical threshold (mean + 2 standard deviations), calculated based on the historical data.
+
+- **[See detailed solution documentation](./[Cloudwalk]%20Selection%20Process%20-%20Monitoring%20Intelligence%20Analyst%20(Night%20Shift)%20-%20Challenge/Solve%20the%20problem.md)**
