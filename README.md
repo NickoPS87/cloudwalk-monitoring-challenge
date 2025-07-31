@@ -52,4 +52,6 @@ See Anomaly Chart
 
 A system was developed to alert when the volume of denied, failed, or reversed transactions exceeds a statistical threshold (mean + 2 standard deviations), calculated based on the historical data.
 
+- **[See detailed analysis documentation](./[Cloudwalk]%20Selection%20Process%20-%20Monitoring%20Intelligence%20Analyst%20(Night%20Shift)%20-%20Challenge/Get%20your%20hands%20dirty.md)**
+- **[See Anomaly Chart](./assets/grafico_anomalia_checkout.png)**
 - **[See detailed solution documentation](./[Cloudwalk]%20Selection%20Process%20-%20Monitoring%20Intelligence%20Analyst%20(Night%20Shift)%20-%20Challenge/Solve%20the%20problem.md)**
