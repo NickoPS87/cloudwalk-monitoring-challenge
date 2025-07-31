@@ -1,6 +1,7 @@
--- Query para comparar as vendas de hoje com a média da semana anterior, por hora.
--- O objetivo é visualizar a queda abrupta que indica a anomalia.
+# Query para comparar as vendas de hoje com a média da semana anterior, por hora.
 
+## O objetivo é visualizar a queda abrupta que indica a anomalia.
+```
 SELECT
     time,
     today,
