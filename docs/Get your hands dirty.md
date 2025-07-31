@@ -3,9 +3,9 @@
 ==**Passo 1: Carregar e Inspecionar os Dados de Checkout**==
 
 → Checkout_1
-![[Checkout_1.png]]
+![Dados do Checkout 1](../csv/Checkout_1.png)
 → Checkout_2
-![[Checkout_2.png]]
+![Dados do Checkout 2](../csv/Checkout_2.png)
 
 ==**Passo 2: Código para Análise Exploratória**==
 
