@@ -1,234 +1,188 @@
+### Step 1: Load and Inspect Checkout Data
 
+- **Checkout_1 Data:**
+![Checkout Data 1](../csv/Checkout_1.png)
+- **Checkout_2 Data:**
+![Checkout Data 2](../csv/Checkout_2.png)
 
-==**Passo 1: Carregar e Inspecionar os Dados de Checkout**==
+### Step 2: Code for Exploratory Analysis
 
-→ Checkout_1
-![Dados do Checkout 1](../csv/Checkout_1.png)
-→ Checkout_2
-![Dados do Checkout 2](../csv/Checkout_2.png)
-
-==**Passo 2: Código para Análise Exploratória**==
-
-→ **Criação de um Script Python. Arquivo: "analise_checkout.py":**
-```
+- **Python Script Creation. File: "analise_checkout.py":**
+```python
 import pandas as pd
 import re
 
-# URLs dos datasets fornecidos no desafio
-url1 = 'https://raw.githubusercontent.com/thais-menezes/monitoring/main/checkout_1.csv'
-url2 = 'https://raw.githubusercontent.com/thais-menezes/monitoring/main/checkout_2.csv'
+# URLs for the datasets provided in the challenge
+url1 = '[https://raw.githubusercontent.com/thais-menezes/monitoring/main/checkout_1.csv](https://raw.githubusercontent.com/thais-menezes/monitoring/main/checkout_1.csv)'
+url2 = '[https://raw.githubusercontent.com/thais-menezes/monitoring/main/checkout_2.csv](https://raw.githubusercontent.com/thais-menezes/monitoring/main/checkout_2.csv)'
 
-# Carregar os dois arquivos CSV em DataFrames
+# Load the two CSV files into DataFrames
 try:
     df1 = pd.read_csv(url1)
     df2 = pd.read_csv(url2)
-    print("Arquivos CSV carregados com sucesso.")
+    print("CSV files loaded successfully.")
 except Exception as e:
-    print(f"Erro ao carregar os arquivos: {e}")
+    print(f"Error loading files: {e}")
     exit()
 
-# Juntar os dois DataFrames em um só
+# Combine the two DataFrames into one
 df_total = pd.concat([df1, df2], ignore_index=True)
-print("DataFrames combinados.")
+print("DataFrames combined.")
 
-# --- INSPECIONAR OS DADOS (VERSÃO CORRIGIDA) ---
+# --- INSPECT THE DATA ---
 
-# 1. Visualizar as 5 primeiras linhas para entender a estrutura
-print("\n--- 1. Amostra dos Dados (head) ---")
+# 1. View the first 5 rows to understand the structure
+print("\n--- 1. Data Sample (head) ---")
 print(df_total.head())
 
-# 2. Obter informações sobre os tipos de dados e valores nulos
-print("\n--- 2. Informações Gerais (info) ---")
+# 2. Get information about data types and null values
+print("\n--- 2. General Info (info) ---")
 df_total.info()
 
-# 3. Obter estatísticas descritivas das colunas numéricas
-print("\n--- 3. Estatísticas Descritivas (describe) ---")
+# 3. Get descriptive statistics for numerical columns
+print("\n--- 3. Descriptive Statistics (describe) ---")
 print(df_total.describe())
 
-# 4. (Opcional, mas recomendado) Limpar a coluna 'time' para ser numérica
-# A coluna 'time' está como '00h', '01h', etc. Convertê-la para um número (0, 1)
-# facilita a ordenação e a criação de gráficos.
-print("\n--- 4. Limpando a coluna 'time' ---")
-# Usamos uma expressão regular para extrair apenas os dígitos
+# 4. Clean the 'time' column to be numeric
+# The 'time' column is in '00h', '01h' format. Converting it to a number (0, 1)
+# makes sorting and plotting easier.
+print("\n--- 4. Cleaning the 'time' column ---")
+# We use a regular expression to extract only the digits
 df_total['hour'] = df_total['time'].str.extract('(\d+)').astype(int)
-df_total = df_total.sort_values(by='hour') # Ordenar do início para o fim do dia
-print("Coluna 'hour' numérica criada e dados ordenados.")
+df_total = df_total.sort_values(by='hour') # Sort by the hour of the day
+print("Numeric 'hour' column created and data sorted.")
 print(df_total.head())
-```
-***► Qual o raciocínio por trás da criação do código?***
+````
 
-	→ Pensei em utilizar o processo de ETL (Extract, Transform, Load).
+  - **What is the reasoning behind the code?**
+      - The approach is based on the **ETL (Extract, Transform, Load)** process.
+      - In short, the code does the following:
+          - **Extract:** It pulls raw data from different sources (the two CSV files).
+          - **Transform:** It cleans and formats this data, converting the time column to a numeric format and sorting the table to be chronological.
+          - **Load:** It makes the result (the clean, sorted table) available for the next step, which could be the actual analysis, chart creation, or report generation.
+      - In summary, the code's function is to prepare "dirty" and disorganized data for useful analysis.
 
-→ De forma sucinta, o código faz o seguinte:
+### Step 3: Python Code Execution
 
-- **Extrai:** Pega dados brutos de diferentes fontes (os dois arquivos CSV).
-- **Transforma:** Limpa e formata esses dados, convertendo a coluna de tempo em um formato numérico e ordenando a tabela para que faça sentido cronologicamente.
-- **Carrega:** Disponibiliza o resultado (a tabela limpa e ordenada) para ser usado na próxima etapa, que seria a análise de fato, a criação de gráficos ou a geração de relatórios.
+  - **Code Output:**
 
-Em resumo, a função do código é deixar dados "sujos" e desorganizados prontos para uma análise útil.
+### Step 4: Identifying Anomalous Behavior
 
+  - As the challenge asks to "understand if there is any anomalous behavior," the most direct way to do this is to compare the `today` column with the reference columns (`yesterday`, `avg_last_week`, `avg_last_month`).
 
-==**Passo 3: Execução do código python**==
+  - To do this, I will add a code block to the "analise\_checkout.py" file that calculates the difference between today's sales and the average of the last week. This will highlight the hours where today's behavior was most unusual.
 
-***Resultado do código:***
-![](../assets/analise_checkout.py.png)
+  - **New code with the addition of the exploratory analysis block:**
 
-==**Passo 4: Identificação do Comportamento Anômalo**==
+<!-- end list -->
 
-► Como o desafio pede para "entender se há algum tipo de comportamento anômalo". Entendo que a maneira mais direta de fazer isso é comparar a coluna `today` com as colunas de referência (`yesterday`, `avg_last_week`, `avg_last_month`).
+```python
+# (The initial code from Step 2 is the same...)
+# Appended code:
 
-► Para isso vou adicionar um bloco de código ao arquivo "analise_checkout,py" que calcula a diferença entre as vendas de hoje e a média da última semana. Isso vai destacar as horas onde o comportamento de hoje foi mais incomum.
+# --- FIND THE ANOMALY ---
 
-***Novo código com a inserção do bloco de análise exploratória:***
-```
-import pandas as pd
-import re
-
-# URLs dos datasets fornecidos no desafio
-url1 = 'https://raw.githubusercontent.com/thais-menezes/monitoring/main/checkout_1.csv'
-url2 = 'https://raw.githubusercontent.com/thais-menezes/monitoring/main/checkout_2.csv'
-
-# Carregar os dois arquivos CSV em DataFrames
-try:
-    df1 = pd.read_csv(url1)
-    df2 = pd.read_csv(url2)
-    print("Arquivos CSV carregados com sucesso.")
-except Exception as e:
-    print(f"Erro ao carregar os arquivos: {e}")
-    exit()
-
-# Juntar os dois DataFrames em um só
-df_total = pd.concat([df1, df2], ignore_index=True)
-print("DataFrames combinados.")
-
-# --- INSPECIONAR OS DADOS (VERSÃO CORRIGIDA) ---
-
-# 1. Visualizar as 5 primeiras linhas para entender a estrutura
-print("\n--- 1. Amostra dos Dados (head) ---")
-print(df_total.head())
-
-# 2. Obter informações sobre os tipos de dados e valores nulos
-print("\n--- 2. Informações Gerais (info) ---")
-df_total.info()
-
-# 3. Obter estatísticas descritivas das colunas numéricas
-print("\n--- 3. Estatísticas Descritivas (describe) ---")
-print(df_total.describe())
-
-# 4. (Opcional, mas recomendado) Limpar a coluna 'time' para ser numérica
-# A coluna 'time' está como '00h', '01h', etc. Convertê-la para um número (0, 1)
-# facilita a ordenação e a criação de gráficos.
-print("\n--- 4. Limpando a coluna 'time' ---")
-# Usamos uma expressão regular para extrair apenas os dígitos
-df_total['hour'] = df_total['time'].str.extract('(\d+)').astype(int)
-df_total = df_total.sort_values(by='hour') # Ordenar do início para o fim do dia
-print("Coluna 'hour' numérica criada e dados ordenados.")
-print(df_total.head())
-
-# --- ENCONTRAR A ANOMALIA ---
-
-print("\n--- Análise de Anomalias ---")
-# Vamos calcular a diferença entre as vendas de hoje e a média da semana anterior
+print("\n--- Anomaly Analysis ---")
+# We will calculate the difference between today's sales and the previous week's average
 df_total['diff_today_vs_avg_week'] = df_total['today'] - df_total['avg_last_week']
 
-# Agora, vamos ordenar os dados para ver onde a diferença foi maior (positiva ou negativa)
+# Now, we sort the data to see where the difference was greatest (positive or negative)
 df_sorted_by_diff = df_total.sort_values(by='diff_today_vs_avg_week', ascending=False)
 
-print("\nHoras com MAIS vendas que a média da semana:")
+print("\nHours with MORE sales than the weekly average:")
 print(df_sorted_by_diff.head(5))
 
-print("\nHoras com MENOS vendas que a média da semana:")
+print("\nHours with FEWER sales than the weekly average:")
 print(df_sorted_by_diff.tail(5))
 ```
-***Resultado do código:***
-![](../assets/analise_exploratoria.py.png)
 
-***Análise da nova saída:*** 
+  - **Code Output:**
 
-→ O retorno nos trouxe duas tabelas:
+  - **Analysis of the new output:**
 
-- As 5 horas em que as vendas de `today` mais superaram a média da semana.
-- As 5 horas em que as vendas de `today` mais ficaram abaixo da média da semana.
-- Foco na última tabela, "Horas com MENOS vendas que a média da semana".
+      - The output provides two tables:
+          - The 5 hours where `today`'s sales most exceeded the weekly average.
+          - The 5 hours where `today`'s sales were most below the weekly average.
+      - The focus is on the second table, "Hours with FEWER sales than the weekly average."
 
+  - **Main Insight - Anomaly Found:**
 
-***Insight Principal - Anomalia Encontrada***
+      - The clearest and most critical anomaly is at the **15h (3 PM)** timestamp:
 
-**→ A anomalia mais clara e crítica está na linha do tempo `15h`:**
-- **`time`**: `15h`
-- **`today`**: `0`
-- **`avg_last_week`**: `22.427`
-- **`diff_today_vs_avg_week`**: `-22.427`
+          - **`time`**: `15h`
+          - **`today`**: `0`
+          - **`avg_last_week`**: `22.427`
+          - **`diff_today_vs_avg_week`**: `-22.427`
 
-#Conclusão: ***Às 15h, as vendas de "today" *caíram para zero*, enquanto o normal para esse horário (baseado na média da semana anterior) seria de aproximadamente 22 vendas. Uma queda total como essa é um forte indicativo de uma *falha crítica no sistema (ex: o gateway de pagamento caiu, um serviço ficou offline, etc.).***
+      - **Conclusion:** At 3 PM, sales for "today" dropped to zero, while the normal for that time (based on the previous week's average) would be approximately 22 sales. A total drop like this is a strong indicator of a **critical system failure (e.g., the payment gateway went down, a service went offline, etc.).**
 
+### Step 5: Creating the SQL Query and Chart
 
+  - **Action:** Transform this discovery into the two deliverables requested by the challenge.
 
-==***Passo 5: Criar a Query SQL e o Gráfico***==
+  - **Reasoning:** The challenge asks for an SQL query that helps explain the anomaly. Even though I'm using Pandas, I will write the query as if the data were in a database. This query will select the necessary data for creating the chart.
 
-#Ação: ***transformar essa descoberta nos dois entregáveis que o desafio pede.***
+  - **SQL Query:**
 
-#Raciocínio: ***O desafio pede uma query SQL que ajude a explicar a anomalia. Mesmo que esteja utilizando o Pandas, vou escrever a query como se os dados estivessem em um banco de dados. Desta forma, selecionando os dados que necessários para criação do gráfico.***
+<!-- end list -->
 
-
-==***► Query SQL:***==
-```
--- Query para comparar as vendas de hoje com a média da semana anterior, por hora.
--- O objetivo é visualizar a queda abrupta que indica a anomalia.
+```sql
+-- Query to compare today's sales with the previous week's average, by hour.
+-- The objective is to visualize the abrupt drop that indicates the anomaly.
 
 SELECT
     time,
     today,
     avg_last_week
 FROM
-    checkouts -- (Imaginando que os dados estão em uma tabela chamada 'checkouts')
+    checkouts -- (Imagining the data is in a table called 'checkouts')
 ORDER BY
     CAST(REPLACE(time, 'h', '') AS INTEGER);
 ```
 
-==***► Código Python para criação do gráfico:***==
+  - **Python Code for Chart Creation:**
 
-#Raciocínio: ***O melhor jeito de mostrar a anomalia é com um gráfico de linhas. Ele vai exibir claramente a linha de `today` caindo para zero enquanto a linha da média se mantém.***
+  - **Reasoning:** The best way to display the anomaly is with a line chart. It will clearly show the `today` line dropping to zero while the average line remains stable.
 
-***→ Bloco de código ao final do seu script `analise_checkout.py`***
-```
+  - **Code block added to the end of the `analise_checkout.py` script:**
+
+<!-- end list -->
+
+```python
 import matplotlib.pyplot as plt
 
-# --- GERAR O GRÁFICO DA ANOMALIA ---
+# --- GENERATE THE ANOMALY CHART ---
 
-print("\n--- Gerando gráfico da anomalia ---")
+print("\n--- Generating anomaly chart ---")
 
-# Configurar o gráfico
-plt.figure(figsize=(12, 6)) # Tamanho da figura
+# Configure the chart
+plt.figure(figsize=(12, 6)) # Figure size
 
-# Plotar as linhas
-plt.plot(df_total['hour'], df_total['today'], marker='o', linestyle='-', label='Vendas de Hoje (Today)')
-plt.plot(df_total['hour'], df_total['avg_last_week'], marker='x', linestyle='--', label='Média da Semana Anterior (avg_last_week)')
+# Plot the lines
+plt.plot(df_total['hour'], df_total['today'], marker='o', linestyle='-', label='Today\'s Sales')
+plt.plot(df_total['hour'], df_total['avg_last_week'], marker='x', linestyle='--', label='Previous Week\'s Average')
 
-# Adicionar a anotação da anomalia
-plt.annotate('Anomalia: Queda Total de Vendas',
-             xy=(15, 0), # Ponto exato da anomalia
-             xytext=(10, 10), # Posição do texto
+# Add the anomaly annotation
+plt.annotate('Anomaly: Total Sales Drop',
+             xy=(15, 0), # Exact point of the anomaly
+             xytext=(10, 10), # Position of the text
              arrowprops=dict(facecolor='black', shrink=0.05),
              fontweight='bold')
 
-# Títulos e legendas
-plt.title('Comparativo de Vendas por Hora: Hoje vs Média da Semana Anterior')
-plt.xlabel('Hora do Dia')
-plt.ylabel('Número de Vendas')
-plt.xticks(range(0, 24)) # Forçar todos os ticks de hora no eixo X
+# Titles and labels
+plt.title('Hourly Sales Comparison: Today vs. Previous Week\'s Average')
+plt.xlabel('Hour of the Day')
+plt.ylabel('Number of Sales')
+plt.xticks(range(0, 24)) # Force all hour ticks on the X-axis
 plt.grid(True, which='both', linestyle='--', linewidth=0.5)
 plt.legend()
 
-# Salvar o gráfico em um arquivo e exibi-lo
+# Save the chart to a file and display it
 plt.savefig('grafico_anomalia_checkout.png')
-print("Gráfico salvo como 'grafico_anomalia_checkout.png'")
+print("Chart saved as 'grafico_anomalia_checkout.png'")
 plt.show()
 ```
 
-==***► O Gráfico***==
+  - **The Chart:**
 
-![](../assets/grafico_anomalia_checkout.png)
-
-#Analise:***O gráfico mostra de forma clara e inquestionável a anomalia que descoberta: a queda total nas vendas às 15h.***
-
+  - **Analysis:** The chart clearly and unquestionably shows the discovered anomaly: the total drop in sales at 3 PM.
