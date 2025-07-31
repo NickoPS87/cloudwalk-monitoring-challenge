@@ -4,12 +4,19 @@
 
 #Raciocínio: ***Primeiro é necessário carregar e entender os novos dados. São dois arquivos: um com as transações e outro que descreve os códigos de status. Em seguida, combinar ambos os arquivos.***
 
+
+
 ***→ Transactions***
-![[Transactions.png]]
+
+![](../csv/Transactions.png)
+
 ****Obs: Imagem é apenas uma amostra do arquivo "Transactions.csv". O arquivo possui 25.921 linhas.
 
+
+
 ***→ Transactions_auth_codes 1***
-![[Transactions_auth_codes 1.png]]
+
+![](../csv/Transactions_auth_codes_1.png)
 ****Obs: Imagem é apenas uma amostra do arquivo "Transactions_auth_codes 1.csv". O arquivo possui 12.961 linhas.
 
 
