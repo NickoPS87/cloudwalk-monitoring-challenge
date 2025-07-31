@@ -14,9 +14,12 @@
 
 
 
+
 ***→ Transactions_auth_codes 1***
 
 ![](../csv/Transactions_auth_codes_1.png)
+
+
 ****Obs: Imagem é apenas uma amostra do arquivo "Transactions_auth_codes 1.csv". O arquivo possui 12.961 linhas.
 
 
@@ -85,7 +88,8 @@ print(df_pivot.columns.tolist())
 ==**Passo 2: Execução do código python**==
 
 ***Resultado do código:***
-![[sistemas_alerta.py.png]]
+
+![](../assets/sistemas_alerta.py.png)
 #Analise: ***Como resultado eu obtive uma tabela onde cada linha é um minuto e cada coluna é um tipo de transação. Com isso, podemos criar os alertas facilmente. Com isso poderei definir as regras de alerta.***
 
 
@@ -233,14 +237,19 @@ if __name__ == '__main__':
 ==*Utilizando e Testando*==
 
 ***► Passo A: Rodar o Servidor:***
-![[servidor_de_alertas.py.png]]
+
+![](../assets/servidor_de_alertas.py.png)
 #Analise: *Como resultado eu obtenho as mensagens de inicialização e por último uma linha dizendo que o servidor está rodando. *
 
 ***► Passo B: Testando o Endpoint (em outro terminal):***
-1. *Cenário Normal (não deve gerar alerta): curl -X POST -H "Content-Type: application/json" -d "{\"denied\": 10, \"failed\": 0, \"reversed\": 1}" http://127.0.0.1:5000/check*
-![[Cenário Normal.png]]
+1. *Cenário Normal (não deve gerar alerta): curl -X POST -H "Content-Type: application/json" -d "{\"denied\": 10, \"failed\": 0, \"reversed\": 1}" http://127.0.0.1:5000/check* 
+
+![](../assets/Cenário%20Normal.png)
+
 2. *Cenário de Anomalia (deve gerar alerta): curl -X POST -H "Content-Type: application/json" -d "{\"denied\": 10, \"failed\": 0, \"reversed\": 5}" http://127.0.0.1:5000/check*
-![[Cenário de Anomalia.png]]
+
+![](../assets/Cenário%20de%20Anomalia.png)
+
 
 
 # Conclusão
