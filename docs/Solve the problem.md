@@ -235,7 +235,11 @@ if __name__ == '__main__':
 
 1.  **Normal Scenario (should not trigger an alert):** `curl -X POST -H "Content-Type: application/json" -d "{\"denied\": 10, \"failed\": 0, \"reversed\": 1}" http://127.0.0.1:5000/check`
 
+![](../assets/Cenário_Normal.png)
+
 2.  **Anomaly Scenario (should trigger an alert):** `curl -X POST -H "Content-Type: application/json" -d "{\"denied\": 10, \"failed\": 0, \"reversed\": 5}" http://127.0.0.1:5000/check`
+
+![](../assets/Cenário_de_Anomalia.png)
 
 ### Conclusion
 
