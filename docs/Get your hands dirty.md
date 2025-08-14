@@ -1,3 +1,5 @@
+## Get your hands dirty
+
 ### Step 1: Load and Inspect Checkout Data
 
 - **Checkout_1 Data:**
