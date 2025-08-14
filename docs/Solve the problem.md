@@ -71,7 +71,10 @@ print(df_pivot.columns.tolist())
 
 ### Step 2: Python Code Execution
 
-  - **Code Output:**
+  - **Alert Systems:**
+
+![](../assets/sistemas_alerta.py.png)
+
   - **Analysis:** As a result, I obtained a table where each row is a minute and each column is a transaction type. With this, we can easily create the alerts and define the alert rules.
 
 ### Step 3: Create Code to Define "Normality" and Alert Rules
@@ -221,6 +224,8 @@ if __name__ == '__main__':
 ### Usage and Testing
 
   - **Step A: Run the Server:**
+#### :warning: Server Alert
+![](../assets/servidor_de_alertas.py.png)
 
   - **Analysis:** As a result, I get the startup messages and finally a line saying the server is running.
 
@@ -237,6 +242,7 @@ if __name__ == '__main__':
 Based on the images, the scenario demonstrates testing an API endpoint (`http://127.0.0.1:5000/check`) that analyzes transaction data to issue a recommendation.
 
 #### Scenario Analysis:
+
 
 1.  **First Test (Result "ok"):**
 
