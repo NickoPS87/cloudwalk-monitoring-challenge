@@ -187,4 +187,6 @@ plt.show()
 
   - **The Chart:**
 
+![Checkout Data 2](../assets/grafico_anomalia_checkout.png)
+
   - **Analysis:** The chart clearly and unquestionably shows the discovered anomaly: the total drop in sales at 3 PM.
