@@ -65,6 +65,7 @@ print(df_total.head())
 ### Step 3: Python Code Execution
 
   - **Code Output:**
+![Checkout Data 2](../assets/analise_checkout.py.png)
 
 ### Step 4: Identifying Anomalous Behavior
 
