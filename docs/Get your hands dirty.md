@@ -98,7 +98,7 @@ print(df_sorted_by_diff.tail(5))
 ```
 
   - **Code Output:**
-
+![Checkout Data 2](../assets/analise_checkout.py.png)
   - **Analysis of the new output:**
 
       - The output provides two tables:
