@@ -127,9 +127,12 @@ for timestamp, row in df_pivot.head().iterrows():
             print(f"  -> OK. Status '{status}' is normal. Value: {current_value}, Threshold: {current_threshold:.2f}")
 ```
 
-  - **Analysis of the result:** The code above calculates the thresholds for the statuses I am interested in (`denied`, `failed`, `reversed`) and then simulates checking for alerts. The output was as follows:
-      - The calculated thresholds for `denied`, `failed`, and `reversed`. A message like: "Alert threshold for 'denied': 8.50 transactions per minute."
-      - A simulation for the first 5 minutes, showing whether each status would generate an alert by comparing the value for that minute against the calculated threshold.
+  - **Analysis of the result:** The code above calculates the thresholds for the statuses I am interested in (`denied`, `failed`, `reversed`) and then simulates checking for alerts.
+
+### The output:
+ - The calculated thresholds for `denied`, `failed`, and `reversed`. A message like: "Alert threshold for 'denied': 8.50 transactions per minute."
+ - A simulation for the first 5 minutes, showing whether each status would generate an alert by comparing the value for that minute against the calculated threshold.
+  
   - In other words, the simulation shows my alerting logic working correctly, properly identifying the moments when the `reversed` status crossed the threshold.
 
 ### Final Step: Create the Alert Endpoint with Flask
